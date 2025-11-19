@@ -19,7 +19,7 @@
                 SemanticProperties.HeadingLevel="Level1" />
 
             <Label
-                Text="WHobby-uri:filme, desen si citit"
+                Text="Hobby-uri:filme, desen si citit"
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"
                 SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
