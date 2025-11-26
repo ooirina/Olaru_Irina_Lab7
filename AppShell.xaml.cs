@@ -1,4 +1,5 @@
-﻿namespace OlaruIrinaLab7
+
+namespace OlaruIrinaLab7
 {
     public partial class AppShell : Shell
     {

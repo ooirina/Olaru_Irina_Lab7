@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using OlaruIrinaLab7.Data;
 using System.IO;
 
@@ -27,7 +27,7 @@ namespace OlaruIrinaLab7
         {
             InitializeComponent();
 
-           
+
         }
         protected override Window CreateWindow(IActivationState? activationState)
         {
