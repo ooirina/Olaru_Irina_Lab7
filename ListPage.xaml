@@ -24,17 +24,20 @@
  Text="Delete"
  Clicked="OnDeleteButtonClicked"/>
         </Grid>
-        <ListView x:Name="listView"
+            <ListView x:Name="listView"
             Margin="20">
-            <ListView.ItemTemplate>
+
+                <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextCell Detail="{Binding Description}" />
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-        <Button Text="Add/Choose Item to buy" MaximumWidthRequest="300"
-       Clicked="OnChooseButtonClicked"/>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Delete item" MaximumWidthRequest="300"
+Clicked="OnDeleteItemClicked"/>
+            <Button Text="Add/Choose Item to buy" MaximumWidthRequest="300"
+           Clicked="OnChooseButtonClicked"/>
+           
     </StackLayout>
         </ContentPage.Content>
 </ContentPage>

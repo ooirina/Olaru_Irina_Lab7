@@ -79,6 +79,18 @@ namespace OlaruIrinaLab7.Data
             }
 
         }
+
+        public Task<int> DeleteListProductAsync(ListProduct lp)
+        {
+            return _database.DeleteAsync(lp);
+        }
+
+        public Task<int> DeleteListProductAsync(int shoplistid, int productid)
+        {
+            return _database.ExecuteAsync(
+                "delete from ListProduct where ShopListID = ? and ProductID = ?",
+                shoplistid, productid);
+        }
         public Task<List<Product>> GetListProductsAsync(int shoplistid)
  {
             return _database.QueryAsync<Product>(
@@ -86,6 +98,13 @@ namespace OlaruIrinaLab7.Data
             + " inner join ListProduct LP"
             + " on P.ID = LP.ProductID where LP.ShopListID = ?",
             shoplistid);
+        }
+
+        public Task<List<ListProduct>> GetListProductEntriesAsync(int shoplistid, int productid)
+        {
+            return _database.QueryAsync<ListProduct>(
+                "SELECT * FROM ListProduct WHERE ShopListID = ? AND ProductID = ?",
+                shoplistid, productid);
         }
     }
     }

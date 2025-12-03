@@ -9,7 +9,7 @@ public partial class ProductPage : ContentPage
     public ProductPage(ShopList slist)
 	{
 		InitializeComponent();
-        ShopList sl;
+        sl = slist;
     }
 
     async void OnAddButtonClicked(object sender, EventArgs e)

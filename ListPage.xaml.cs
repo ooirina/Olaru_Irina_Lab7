@@ -10,8 +10,7 @@ public partial class ListPage : ContentPage
 
     async void OnChooseButtonClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new ProductPage((ShopList)
-       this.BindingContext)
+        await Navigation.PushAsync(new ProductPage((ShopList)this.BindingContext)
         {
             BindingContext = new Product()
         });
@@ -31,12 +30,43 @@ public partial class ListPage : ContentPage
         await Navigation.PopAsync();
     }
 
+    
+    async void OnDeleteItemClicked(object sender, EventArgs e)
+    {
+      if(listView.SelectedItem is Product product)
+        { await App.Database.DeleteProductAsync(product);
+
+            var shopl = (ShopList)BindingContext;
+            listView.ItemsSource = await App.Database.GetListProductsAsync(shopl.ID);
+            listView.SelectedItem = null;
+        }
+      else
+        {
+            await DisplayAlert("Atentie", "Selectati un articol din lista pentru a-l sterge.", "OK");
+        }
+
+
+    }
+
     protected override async void OnAppearing()
     {
         base.OnAppearing();
         var shopl = (ShopList)BindingContext;
 
         listView.ItemsSource = await App.Database.GetListProductsAsync(shopl.ID);
+    }
+
+
+
+    async void OnDeleteItemButtonClicked(object sender, EventArgs e)
+    {
+        if (listView.SelectedItem != null)
+        {
+            var product = listView.SelectedItem as Product;
+            var shopl = (ShopList)BindingContext;
+            await App.Database.DeleteListProductAsync(shopl.ID, product.ID);
+            listView.ItemsSource = await App.Database.GetListProductsAsync(shopl.ID);
+        }
     }
 
 }
